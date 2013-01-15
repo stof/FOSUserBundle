@@ -37,7 +37,7 @@ class TokenGenerator implements TokenGeneratorInterface
 
     public function generateToken()
     {
-        return base_convert(bin2hex($this->getRandomNumber()), 16, 36);
+        return strtr(base64_encode($this->getRandomNumber()), '+/=', '.-~');
     }
 
     private function getRandomNumber()
